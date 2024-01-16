@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,8 +20,10 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView nameTextView;
     private TextView descriptionTextView;
+    private TextView nblike;
+    private TextView nbdislike;
     private TextView dateTextView;
-    private ImageView imageView;
+    private ImageView imageView,like,dislike;
 
     private Toolbar toolbar;
 
@@ -28,14 +31,14 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        // Activer la barre d'action par défaut
-        //1 - Configuring Toolbar
-        this.configureToolbar();
+
         // Récupérer les vues pour afficher les détails de l'élément
         nameTextView = findViewById(R.id.namedt);
         descriptionTextView = findViewById(R.id.descriptiondt);
         dateTextView = findViewById(R.id.datedt);
         imageView = findViewById(R.id.imageView3);
+        nblike = findViewById(R.id.nblike2);
+        nbdislike = findViewById(R.id.nbdislike2);
 
         // Récupérer les détails de l'élément depuis l'intent
         Intent intent = getIntent();
@@ -43,12 +46,16 @@ public class DetailActivity extends AppCompatActivity {
         String itemDescription = intent.getStringExtra("description");
         String itemDate = intent.getStringExtra("date");
         int itemImage = intent.getIntExtra("imageview", 0);
+        int itemLike = intent.getIntExtra("like", 0);
+        int itemDislike = intent.getIntExtra("dislike",0);
 
         // Afficher les détails de l'élément dans les vues correspondantes
         nameTextView.setText(itemName);
         descriptionTextView.setText(itemDescription);
         dateTextView.setText(itemDate);
         imageView.setImageResource(itemImage);
+        //nblike.setText(String.valueOf(itemLike));
+        //nbdislike.setText(String.valueOf(itemDislike));
     }
 
     private void configureToolbar(){

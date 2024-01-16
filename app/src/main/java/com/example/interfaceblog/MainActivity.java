@@ -6,7 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,23 +40,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements RecycleViewOnItemClick {
-    private List<Item> items = new ArrayList<>();
+public class MainActivity extends AppCompatActivity implements RecycleViewOnItemClick, SensorEventListener {
 
-    private ImageButton likeButton;
-    private ImageButton dislikeButton;
-    private TextView likeCountTextView;
-    private TextView dislikeCountTextView;
-    private int likeCount = 0;
-    private int dislikeCount = 0;
-    private AppDataBase dataBase;
+    private List<Blog> blogList = new ArrayList<>();
     private MyAdapter adapter;
-    private List<Blog> blogList = new ArrayList<Blog>();
-    private GitHubService gitHubService;
     private RecyclerView recyclerView;
     private String url = Constants.BASE_URL;
     private user currentUser;
 
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
+
+    // Variables pour la gestion du défilement
+    private float currentY = 0;
+    private static final int SCROLL_THRESHOLD = 10; // Ajustez selon votre sensibilité
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +112,52 @@ public class MainActivity extends AppCompatActivity implements RecycleViewOnItem
                 startActivity(intent);
             }
         });
+
+        // Configurer le capteur d'accéléromètre
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager != null) {
+            accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
+
+        if (accelerometer != null) {
+            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        } else {
+            Log.e("MainActivity", "Accelerometer not supported on this device");
+        }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            float y = event.values[1];
+
+            // Vérifier le mouvement vertical de la main
+            if (Math.abs(y - currentY) > SCROLL_THRESHOLD) {
+                // Si le mouvement est vers le haut, défilez vers le haut
+                if (y < currentY) {
+                    recyclerView.smoothScrollBy(0, -1150); // Ajustez la valeur selon vos besoins
+                }
+                // Si le mouvement est vers le bas, défilez vers le bas
+                else {
+                    recyclerView.smoothScrollBy(0, 1150); // Ajustez la valeur selon vos besoins
+                }
+
+                // Mettez à jour la position actuelle
+                currentY = y;
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Vous pouvez ignorer cela pour l'exemple
+    }
     private void configureToolbar(){
         // Get the toolbar view inside the activity layout
         Toolbar toolbar = findViewById(R.id.mytoolbar);
@@ -130,7 +176,11 @@ public class MainActivity extends AppCompatActivity implements RecycleViewOnItem
         intent.putExtra("description", blog.getDescription());
         intent.putExtra("date", blog.getDate());
         intent.putExtra("imageview", blog.getImage());
+        intent.putExtra("like", blog.getLike());
+        intent.putExtra("dislike", blog.getDislike());
+
         startActivity(intent);
     }
+
 }
 
