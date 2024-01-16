@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "interfaceBlog"
+rootProject.name = "gestion_produit"
 include(":app")
  

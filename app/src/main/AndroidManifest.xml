@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    xmlns:tools="http://schemas.android.com/tools" >
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+
 
     <application
         android:allowBackup="true"
@@ -12,36 +15,39 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.InterfaceBlog"
-        tools:targetApi="31"
-        android:networkSecurityConfig="@xml/network_security_config"
-        android:usesCleartextTraffic="true">
-        <activity
-            android:name=".AddBlog"
-            android:exported="false"
-            android:windowSoftInputMode="stateVisible"
-            android:parentActivityName=".MainActivity"
-            />
+        android:theme="@style/Theme.Gestion_produit"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31" >
 
         <activity
-            android:name=".DetailActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity"
-            />
+            android:name=".front.Add_Produit"
+            android:exported="false" />
+        <activity
+            android:name=".front.CartActivity"
+            android:exported="false" />
+        <activity android:name=".front.ShowDetailActivity" />
+        <activity android:name=".front.Productdetails" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="anroid.nfc.action.NDEF_DICOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
-
 
 </manifest>
