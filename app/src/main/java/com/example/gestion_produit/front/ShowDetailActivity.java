@@ -6,7 +6,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.gestion_produit.R;
@@ -28,8 +30,19 @@ public class ShowDetailActivity extends AppCompatActivity {
         managmentCart=new ManagmentCart(this);
         initView();
         getBundle();
+        //1 - Configuring Toolbar
+        this.configureToolbar();
     }
-
+    private void configureToolbar(){
+        //Get the toolbar (Serialise)
+        Toolbar toolbar = (Toolbar) findViewById(R.id.mytoolbar);
+        //Set the toolbar
+        setSupportActionBar(toolbar);
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
     private void getBundle() {
         object=(Products) getIntent().getSerializableExtra("object");
       /*  int drawableResourceId=this.getResources().getIdentifier(object.getImageurl(),"drawable",this.getPackageName());
@@ -71,7 +84,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                 managmentCart.insertProduit(object);
             }
         });
-        arrowback.setOnClickListener(v -> finish());
+
     }
 
     private void initView() {
@@ -83,7 +96,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         plusBtn=findViewById(R.id.plusBtn);
         minusBtn=findViewById(R.id.minusBtn);
         picproduit=findViewById(R.id.picproduit);
-        arrowback=findViewById(R.id.arrowback);
+
 
     }
 }

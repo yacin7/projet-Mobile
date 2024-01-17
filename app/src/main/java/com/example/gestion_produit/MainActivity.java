@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gestion_produit.adapter.ProductAdapter;
 import com.example.gestion_produit.adapter.ProductCatAdapter;
@@ -105,7 +104,7 @@ TextView buttoncart;
     }
     private void bottomnavigation()
     {
-        ImageView cartbtn=findViewById(R.id.cartbtn);
+        ImageView cartbtn=findViewById(R.id.cartbtnhome);
         cartbtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
         buttoncart.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,CartActivity.class)));
 

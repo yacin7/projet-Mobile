@@ -14,60 +14,82 @@
         android:layout_marginTop="20dp">
 
         <TextView
-            android:id="@+id/amazonName"
-            android:layout_width="346dp"
-            android:layout_height="78dp"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:id="@+id/FitnessName"
+            android:text="Fitness"
+            android:textSize="40sp"
+            android:textColor="#DA7E0C"
             android:layout_marginStart="18dp"
             android:layout_marginTop="40dp"
-            android:text="Dashboard"
-            android:textColor="#373b54"
-            android:textSize="60sp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/FitnessDesc"
+            android:textSize="14sp"
+            android:layout_marginStart="18dp"
+            android:textColor="#DA7E0C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/FitnessName"
+            app:layout_constraintEnd_toStartOf="@+id/FitnessImage"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:id="@+id/FitnessImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toEndOf="@id/FitnessName"/>
 
         <LinearLayout
-            android:id="@+id/row1"
             android:layout_width="0dp"
             android:layout_height="175dp"
+            android:id="@+id/row1"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="170dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/FitnessImage">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/clothingCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:id="@+id/clothingCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="20dp">
+                app:cardElevation="20dp"
+                app:cardCornerRadius="20dp">
 
                 <RelativeLayout
+                    android:id="@+id/profil"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#fd6f27">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/clothingName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/clothingImage"
+                        android:layout_below="@+id/profill"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Users"
-                        android:textColor="#373b54"
+                        android:text="Profil"
+                        android:textColor="#DA7E0C"
                         android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/clothingImage"
+                        android:id="@+id/profill"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/test1" />
+                        android:src="@drawable/baseline_person_24" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -77,32 +99,34 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="20dp">
+                app:cardElevation="20dp"
+                app:cardCornerRadius="20dp">
 
                 <RelativeLayout
+                    android:id="@+id/produit1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#fd6f27">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/elecName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/elecImage"
+                        android:layout_below="@+id/produit"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Produits"
-                        android:textColor="#373b54"
+                        android:text="Shop"
+                        android:textColor="#DA7E0C"
                         android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/elecImage"
+                        android:id="@+id/produit"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
+
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/test1" />
+                        android:background="#DA7E0C"
+                        android:src="@drawable/ic_cart" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -129,28 +153,28 @@
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
+                    android:id="@+id/blog1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#fd6f27">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/homeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/homeImage"
+                        android:layout_below="@+id/blog"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Events"
-                        android:textColor="#373b54"
+                        android:text="Blog"
+                        android:textColor="#DA7E0C"
                         android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/homeImage"
+                        android:id="@+id/blog"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/test2" />
+                        android:src="@drawable/baseline_add_comment_24" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -164,28 +188,28 @@
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
+                    android:id="@+id/Event1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#fd6f27">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/beautyName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/beautyImage"
+                        android:layout_below="@+id/Event"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Blogs"
-                        android:textColor="#373b54"
+                        android:text="Evenement"
+                        android:textColor="#DA7E0C"
                         android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/beautyImage"
+                        android:id="@+id/Event"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/test3" />
+                        android:src="@drawable/baseline_event_24" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -212,28 +236,28 @@
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
+                    android:id="@+id/cours1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#fd6f27">
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/cours"
+                        android:id="@+id/courss"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/pharmImage"
+                        android:layout_below="@+id/cours"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="Cours"
-                        android:textColor="#373b54"
+                        android:textColor="#DA7E0C"
                         android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/pharmImage"
+                        android:id="@+id/cours"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/test4" />
+                        android:src="@drawable/baseline_fitness_center_24" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
