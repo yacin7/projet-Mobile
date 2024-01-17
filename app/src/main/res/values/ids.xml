@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="editTextUsername" type="id" />
+    <item name="editTextPassword" type="id" />
+    <item name="editTextBirthdate" type="id" />
+    <item name="imageViewProfilePicture" type="id" />
+    <item name="btnPickProfilePicture" type="id" />
+    <item name="btnSignUp" type="id" />
+    <item name="textViewTitle" type="id" />
+    <item name="buttonSignIn" type="id" />
+    <item name="buttonSignUp" type="id" />
+</resources>
