@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.interfaceblog.entities.Blog;
 
 import java.util.List;
@@ -50,6 +51,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.nameView.setText(item.getName());
         holder.descriptionView.setText(item.getDescription());
         holder.dateView.setText(item.getDate());
+        Glide.with(holder.itemView.getContext())
+                .load(item.getImage())
+                .placeholder(R.drawable.placeholder) // Image de remplacement en cas de chargement
+                .error(R.drawable.error) // Image de remplacement en cas d'erreur de chargement
+                .into(holder.imageView);
         holder.imageView.setImageResource(item.getImage());
         holder.likeView.setText(String.valueOf(item.getLike()));
         holder.dislikeView.setText(String.valueOf(item.getDislike()));

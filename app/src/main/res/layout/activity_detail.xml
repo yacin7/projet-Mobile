@@ -7,47 +7,91 @@
     tools:context=".DetailActivity"
     android:background="#eee">
     <include
+        android:id="@+id/barr"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"
-        tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/namedt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView3"
-        android:text="Name"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:layout_marginTop="10dp"
-        android:layout_centerInParent="true"/>
-    <TextView
-        android:id="@+id/datedt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/namedt"
-        android:text="06/11/2023"
-        android:textColor="@color/black"
-        android:layout_centerInParent="true"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/descriptiondt"
-        android:layout_below="@id/datedt"
-        android:text="La fitness englobe des activités physiques variées visant à améliorer la santé et le bien-être, allant de l'exercice cardiovasculaire à la musculation."
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="711dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/barr"
+        tools:context=".DetailedActivity">
+
+        <TextView
+            android:id="@+id/namedt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:text="Recipe Name"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage"
+            android:layout_width="380dp"
+            android:layout_height="185dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="380dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Duration:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/datedt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="time"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Description:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descriptiondt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/maggieDesc"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

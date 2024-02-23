@@ -13,6 +13,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class DetailActivity extends AppCompatActivity {
         nameTextView.setText(itemName);
         descriptionTextView.setText(itemDescription);
         dateTextView.setText(itemDate);
-        imageView.setImageResource(itemImage);
+        imageView.setImageResource(R.drawable.placeholder);
         //nblike.setText(String.valueOf(itemLike));
         //nbdislike.setText(String.valueOf(itemDislike));
     }

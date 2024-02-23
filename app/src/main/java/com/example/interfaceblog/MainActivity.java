@@ -179,8 +179,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewOnItem
         intent.putExtra("like", blog.getLike());
         intent.putExtra("dislike", blog.getDislike());
 
-        startActivity(intent);
-    }
+        startActivity(intent);    }
 
 }
 

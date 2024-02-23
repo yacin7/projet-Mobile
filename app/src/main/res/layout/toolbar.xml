@@ -4,8 +4,8 @@
     android:id="@+id/mytoolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="#DA7E0C"
-    app:title="Blog"
+    android:background="#24EA2C"
+    app:title="News"
     app:titleTextColor="@color/white"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 </androidx.appcompat.widget.Toolbar>
